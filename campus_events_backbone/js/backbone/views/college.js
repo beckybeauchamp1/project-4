@@ -4,9 +4,10 @@ App.Views.College = Backbone.View.extend({
   initialize: function(){
     this.listenTo(this.model, 'change', this.render);
     this.template = Handlebars.compile($("#collegeTemplate").html());
-    this.render();
   },
   render: function(){
+    console.log("render");
+    console.log(this.model);
     event.preventDefault();
     this.$el.html(this.template(this.model.toJSON()));
   }

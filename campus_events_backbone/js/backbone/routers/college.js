@@ -8,7 +8,8 @@ App.Routers.College = Backbone.Router.extend({
   },
   index: function(){
     App.Collections.colleges.fetch().then(function(){
-      console.log("fetched colleges");
+      App.Views.collegeList.searchStates();
+      App.Views.collegeList.buttonClick();
     });
   }
 });

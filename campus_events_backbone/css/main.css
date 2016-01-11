@@ -1,0 +1,10 @@
+* {
+  box-sizing: border-box;
+}
+body {
+
+}
+.college-searches {
+  display: inline;
+  margin: 10px;
+}
