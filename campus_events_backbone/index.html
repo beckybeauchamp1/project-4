@@ -25,6 +25,7 @@
   <main>
     <nav class="top-fixed-nav">
       <ul>
+        <li class="pull-left"><a href="#"><i class="fa fa-university"></i></a></li>
         <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
         <li><a href="#"><i class="fa fa-twitter-square"></i></a></li>
         <li><a href="#"><i class="fa fa-instagram"></i></a></li>
@@ -43,6 +44,13 @@
       <p>What's happening on your campus?</p>
     </div>
     <div class="container">
+      <!-- <div id="Tab1" class="container">
+        <ul class="nav nav-pills">
+          <li class="active">
+            <a href="#1b" data-toggle="tab">ABOUT</a>
+          </li>
+          <li a href=
+      </div> -->
       <div class="state-search">
         <div class="dropdown college-searches">
           <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Find By State
@@ -51,7 +59,7 @@
             </ul>
           </div>
           <div class="dropdown college-searches">
-            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Search By Name:
+            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Search By Name
               <span class="caret"></span></button>
               <form action="" class="dropdown-menu">
                 <input type="search" name="collegesearch" class="collegeSearch">
@@ -59,12 +67,14 @@
               </form>
             </div>
           </div>
+          <div id="colleges">
+          </div>
+          <script id="collegeTemplate" type="text/x-handlebars-template">
+            <h2>{{name}}</h2>
+            <p>Location:</p>
+            <p>{{city}}, {{state}} {{zipcode}}</p>
+          </script>
         </div>
-        <div id="colleges">
-        </div>
-        <script id="collegeTemplate" type="text/x-handlebars-template">
-          <h2>{{name}}</h2>
-        </script>
       </main>
     </body>
     </html>

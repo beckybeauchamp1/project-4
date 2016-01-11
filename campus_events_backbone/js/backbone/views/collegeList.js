@@ -1,5 +1,6 @@
 App.Views.CollegeList = Backbone.View.extend({
   el: '#colleges',
+  views: [],
   initialize: function(){
     this.listenTo(this.collection, 'reset', this.renderAll);
     this.listenTo(this.collection, 'add', this.renderOne);
@@ -12,7 +13,7 @@ App.Views.CollegeList = Backbone.View.extend({
   renderOne: function(college){
     console.log("render one");
     var collegeView = new App.Views.College({model: college});
-    // this.$el.prepend(collegeView.$el);
+    this.views.push(collegeView);
   },
   searchStates: function(){
     var self = this;
@@ -38,8 +39,9 @@ App.Views.CollegeList = Backbone.View.extend({
   },
   displaySearchResults: function(searchResults){
     for(i=0;i<searchResults.length;i++) {
-      div = $('<div></div>').text(searchResults[i].get('name'));
-      $('.state-search').append(div);
+      var collegeId = $("<a href='#colleges/" + searchResults[i].get('id') + "'></a>").text(searchResults[i].get('name'));
+      collegeId.addClass("college-search-results");
+      $('.state-search').append(collegeId);
     }
   },
   buttonClick: function(){
@@ -48,5 +50,14 @@ App.Views.CollegeList = Backbone.View.extend({
       event.preventDefault();
       App.Collections.colleges.searchByName();
     });
+  },
+  findId: function(id){
+    for(var i = 0; i < this.views.length; i++){
+      if(this.views[i].model.get("id") == id){
+        var view = this.views[i];
+        console.log(this.views[i]);
+        return view;
+      }
+    }
   }
 });

@@ -6,7 +6,8 @@ App.Collections.Colleges = Backbone.Collection.extend({
 
   searchByName: function(){
     console.log("function happening");
-    var searchName = this.filter(function(findModel){
+    var searchName = this.
+    filter(function(findModel){
       var search = $(".collegeSearch").val();
       var modelFilter = new RegExp(search, "i");
       return modelFilter.test(findModel.get("name"));

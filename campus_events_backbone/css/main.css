@@ -60,16 +60,23 @@ main p{
 .top-fixed-nav ul{
   list-style-type: none;
   text-align: right;
-  margin-left: 10px;
+  margin-left: 5px;
 }
 .top-fixed-nav ul li{
   display: inline;
   padding: 4px;
-  margin-left: 15px;
+  margin-left: 20px;
   font-size: 36px;
 }
-.top-fixed-nav ul li a{
+.fa-university{
+  margin-right: -10px;
   color: white;
+}
+.fa-university:hover{
+  color: rgba(0,0,0,0.8);
+}
+.top-fixed-nav ul li a{
+  color: #4ddaff;
 }
 .top-fixed-nav ul li a:hover{
   color: black;
@@ -92,8 +99,11 @@ main p{
   padding: 4px;
   margin-left: 40px;
 }
-form{
-  width: 650px;
+.state-search{
+  padding-top: 20px;
+}
+.state-search button{
+  font-size: 20px;
 }
 .collegeSearch{
   width: 400px;
@@ -103,10 +113,18 @@ form{
   margin-right: 10px;
   margin-bottom: 10px;
 }
+.college-search-results{
+  display: block;
+  text-align: center;
+  font-size: 30px;
+}
 input{
   display: inline;
   font-size: 20px;
   font-weight: bolder;
+}
+form{
+  width: 650px;
 }
 .submit{
   width: 20%;
