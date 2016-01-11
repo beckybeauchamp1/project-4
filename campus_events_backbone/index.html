@@ -10,8 +10,11 @@
 <script src="bower_components/backbone/backbone-min.js"></script>
 <script src="js/app.js"></script>
 <script src="js/backbone/routers/college.js"></script>
+<script src="js/backbone/models/event.js"></script>
 <script src="js/backbone/models/college.js"></script>
+<script src="js/backbone/collections/events.js"></script>
 <script src="js/backbone/collections/colleges.js"></script>
+<script src="js/backbone/views/event.js"></script>
 <script src="js/backbone/views/college.js"></script>
 <script src="js/backbone/views/collegeList.js"></script>
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -62,6 +65,8 @@
         </ul>
         <div id="college-info" class="tab-content">
           <div id="colleges" class="tab-pane fade in active">
+            <div id="events-id" class="events-class-div">
+            </div>
           </div>
           <div id="calendar" class="tab-pane">
           </div>
@@ -83,6 +88,7 @@
               </form>
             </div>
           </div>
+
           <script id="collegeTemplate" type="text/x-handlebars-template">
             <div class="row">
               <div class="col-md-8 tags">
@@ -94,6 +100,45 @@
               </div>
             </div>
           </script>
+
+          <script id="eventFormTemplate" type="text/x-handlebars-template">
+            <form class="eventForm">
+              <div class="form-horizontal">
+                <fieldset>
+                  <label>Title:</label>
+                  <div><input type="text" name="title" placeholder="title"></div>
+                </fieldset>
+                <fieldset>
+                  <label>Image Url:</label>
+                  <div><input type="text" name="image" placeholder="image url"></div>
+                </fieldset>
+                <fieldset>
+                  <label>Content:</label>
+                  <div><textarea name="content" placeholder="content"></textarea></div>
+                </fieldset>
+                <fieldset>
+                  <label>start_date:</label>
+                  <div><input type="text" name="start_date" placeholder="start date"></div>
+                </fieldset>
+                <fieldset>
+                  <label>end_date:</label>
+                  <div><input type="text" name="end_date" placeholder="end date"></div>
+                </fieldset>
+                <fieldset>
+                  <label>starting_time:</label>
+                  <div><input type="text" name="starting_time" placeholder="starting_time"></div>
+                </fieldset>
+                <fieldset>
+                  <label>&nbsp;</label>
+                  <div>
+                    <button class="btn submit btn-primary">Submit</button>
+                    <button class="btn cancel">Cancel</button>
+                  </div>
+                </fieldset>
+              </div>
+            </form>
+          </script>
+
         </div>
       </main>
     </body>
