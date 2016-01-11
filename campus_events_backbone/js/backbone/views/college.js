@@ -19,6 +19,7 @@ App.Views.College = Backbone.View.extend({
   hideSearch: function(){
     console.log("hide search");
     this.$el.empty();
+    $(".state-search").empty();
     $(".dropdown-toggle").hide();
   }
 });

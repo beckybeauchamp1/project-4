@@ -38,16 +38,62 @@ button{
 .main-heading-div{
   text-align: center;
   width: 40%;
-  margin-top: 70px;
+  margin-top: 30px;
 }
 main p{
   font-size: 20px;
 }
-.container{
+.main-content-container{
   height: 1000px;
   width: 80%;
-  background-color: rgba(255,255,255,0.6);
+  background-color: rgba(255,255,255,0.8);
   margin-top: 10px;
+}
+#Tab1{
+  text-align: left;
+  width: 100%;
+}
+#Tab1 h3{
+  font-family: "Droid Serif";
+}
+#college-info{
+  width: 100%;
+  width: inherit;
+}
+#colleges{
+  width: 100%;
+}
+.tags{
+  text-align: left;
+}
+.college-name{
+  text-align: right;
+}
+.heading-pills{
+  margin-top: -42px;
+  margin-right: -30px;
+}
+.heading-pills li{
+  padding-left: 14px;
+}
+.heading-pills a{
+  font-size: 17px;
+  background-color: rgba(0,0,0,0.3);
+}
+.heading-pills>li.active>a{
+  background-color: rgba(255,255,255,0.8);
+  color: black;
+}
+.heading-pills>li.active>a:hover{
+  background-color: rgba(255,255,255,0.8);
+  color: black;
+}
+.heading-pills>li.active>a:focus{
+  background-color: rgba(255,255,255,0.8);
+  color: black;
+}
+.heading-pills a:hover{
+  background-color: #4ddaff;
 }
 .college-searches {
   display: inline;
@@ -92,7 +138,7 @@ main p{
 .second-nav ul{
   list-style-type: none;
   text-align: right;
-  margin-left: 30px;
+  margin-right: 20px;
 }
 .second-nav ul li{
   display: inline;
