@@ -18,26 +18,45 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="css/main.css" type="text/css">
+<link href='https://fonts.googleapis.com/css?family=Bangers' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Graduate' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
 <body>
-  <h1>Colleges</h1>
-  <div class="container">
-    <div class="state-search">
-      <div class="dropdown college-searches">
-        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Search By Name:
-          <span class="caret"></span></button>
-          <form action="" class="dropdown-menu">
-            <input type="search" name="collegesearch" class="collegeSearch">
-            <input type="submit" class="submit" list="results">
-            <datalist id="results">
-              <option value="HTML">
-              </datalist>
-            </form>
+  <main>
+    <nav class="top-fixed-nav">
+      <ul>
+        <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
+        <li><a href="#"><i class="fa fa-twitter-square"></i></a></li>
+        <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+
+      </ul>
+    </nav>
+    <nav class="second-nav">
+      <ul>
+        <li><a href="#">NEWS</a></li>
+        <li><a href="#">LOG IN</a></li>
+        <li><a href="#">SIGN UP</a></li>
+      </ul>
+    </nav>
+    <div class="main-heading-div">
+      <h1 class="main-h1">College</h1><h1>vents</h1>
+      <p>What's happening on your campus?</p>
+    </div>
+    <div class="container">
+      <div class="state-search">
+        <div class="dropdown college-searches">
+          <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Find By State
+            <span class="caret"></span></button>
+            <ul class="dropdown-menu state-list">
+            </ul>
           </div>
           <div class="dropdown college-searches">
-            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Find By State
+            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Search By Name:
               <span class="caret"></span></button>
-              <ul class="dropdown-menu state-list">
-              </ul>
+              <form action="" class="dropdown-menu">
+                <input type="search" name="collegesearch" class="collegeSearch">
+                <input type="submit" class="submit btn btn-default" list="results">
+              </form>
             </div>
           </div>
         </div>
@@ -46,5 +65,6 @@
         <script id="collegeTemplate" type="text/x-handlebars-template">
           <h2>{{name}}</h2>
         </script>
-      </body>
-      </html>
+      </main>
+    </body>
+    </html>

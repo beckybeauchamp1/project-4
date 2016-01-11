@@ -12,7 +12,7 @@ App.Views.CollegeList = Backbone.View.extend({
   renderOne: function(college){
     console.log("render one");
     var collegeView = new App.Views.College({model: college});
-    this.$el.prepend(collegeView.$el);
+    // this.$el.prepend(collegeView.$el);
   },
   searchStates: function(){
     var self = this;
