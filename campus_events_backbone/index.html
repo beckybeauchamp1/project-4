@@ -67,29 +67,30 @@
         </div>
         <div id="colleges" class="tab-pane fade in active">
         </div>
-          <div id="new-event-modal">
-            <form class="eventForm">
-              <h2>Create Event:</h2>
-              <span class="close">[x]</span>
-              <label>Title</label>
-              <input type="text" name="title" placeholder="title">
-              <label>Photo Url</label>
-              <input type="text" name="image" placeholder="image url">
-              <label>Content</label>
-              <textarea name="content" placeholder="content"></textarea>
-              <label>Start_Date</label>
-              <input id="startdate" name="start_date" placeholder="start_date" min="2015-01-01" max="2017-01-01" type="date">
-              <label>End_Date</label>
-              <input id="end_date" name="end_date" min="2015-01-01" max="2017-01-01" type="date">
-              <label>Event_Time</label>
-              <input id="starting-time" name="exit-time" type="time">
-              <label>Ending_Time</label>
-              <input id="ending-time" name="exit-time" type="time">
-              <button class="btn submit btn-default submitEvent">Submit</button>
-              <button class="btn cancel cancelEvent">Cancel</button>
-            </form>
+        <div id="new-event-modal">
+          <form class="eventForm">
+            <h2>Create Event:</h2>
+            <button type="button" class="closeForm">X</button>
+            <label>Title</label>
+            <input id="title" type="text" name="title" placeholder="title">
+            <label>Photo Url</label>
+            <input id="image" type="text" name="image" placeholder="image url">
+            <label>Content</label>
+            <textarea id="content" name="content" placeholder="content"></textarea>
+            <label>Start_Date</label>
+            <input id="start_date" name="start_date" placeholder="start_date" min="2015-01-01" max="2017-01-01" type="date">
+            <label>End_Date</label>
+            <input id="end_date" name="end_date" min="2015-01-01" max="2017-01-01" type="date">
+            <label>Event_Time</label>
+            <input id="starting_time" name="exit-time" type="time">
+            <label>Ending_Time</label>
+            <input id="ending_time" name="exit-time" type="time">
+            <button type="button" class="btn btn-default submitEventForm">Submit</button>
+          </form>
+        </div>
+        <div class="all-events-div">
+          <div id="events-page" class="tab-pane">
           </div>
-        <div id="calendar" class="tab-pane">
         </div>
       </div>
 
@@ -109,23 +110,34 @@
               </form>
             </div>
           </div>
-
-          <script id="collegeTemplate" type="text/x-handlebars-template">
-            <div class="row">
-              <div class="col-md-8 tags">
-                <h3>Event Tags:</h3>
-                <button type="button" class="btn btn-default btn-lg toggle-event-form" data-toggle="modal" data-target="#new-event-model">
-                  Create New Event
-                </button>
-                <div class="col-md-4 college-name">
-                  <h3>{{name}}</h3>
-                  <h4>{{city}}, {{state}} {{zipcode}}</h4>
-                </div>
-              </div>
-            </div>
-          </script>
-
         </div>
       </main>
-    </body>
-    </html>
+
+      <script id="collegeTemplate" type="text/x-handlebars-template">
+        <div class="row">
+          <div class="col-md-8 tags">
+            <h3>Event Tags:</h3>
+            <button type="button" class="btn btn-default btn-lg toggle-event-form" data-toggle="modal" data-target="#new-event-model">
+              Create New Event
+            </button>
+            <div class="col-md-4 college-name">
+              <h3>{{name}}</h3>
+              <h4>{{city}}, {{state}} {{zipcode}}</h4>
+            </div>
+          </div>
+        </div>
+      </script>
+
+      <script id="eventTemplate" type="text/x-handlebars-template">
+        <div class="row">
+          <div class="col-md-8 tags">
+            <h3>{{title}}</h3>
+            <p>{{content}}</p>
+            <!-- <div class="col-md-4 college-name">
+            <h3>{{name}}</h3>
+          </div> -->
+        </div>
+      </div>
+    </script>
+  </body>
+  </html>

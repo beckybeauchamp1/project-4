@@ -1,10 +1,15 @@
 App.Views.College = Backbone.View.extend({
   className: 'college',
   el: '#colleges',
-  tagName: 'li',
+  events: {
+    'click button.closeForm': 'alertUser'
+  },
+  alertUser: function(){
+    alert("hey!");
+  },
   initialize: function(){
-    this.listenTo(this.model, 'change', this.render);
-    this.listenTo(this.model.events, 'add', this.renderEvent);
+    this.listenTo(this.model, 'change', this.renderCollege);
+    this.listenTo(this.model.collegeEvents, 'add', this.renderEvent);
     this.template = Handlebars.compile($("#collegeTemplate").html());
   },
   render: function(){
@@ -15,12 +20,47 @@ App.Views.College = Backbone.View.extend({
   renderCollege: function(){
     App.Routers.college.navigate('colleges/' + this.model.id);
     this.$el.html(this.template(this.model.toJSON()));
+    this.model.collegeEvents.fetch().then(function(data){
+      data.each(this.renderEvent.bind(this));
+    });
     this.toggleEventForm();
   },
   toggleEventForm: function(){
+    event.stopPropagation();
     var self = this;
     $(".toggle-event-form").on("click", function(){
       $("#new-event-modal").show();
+      self.closeEventForm();
+      self.collegeEventListener();
+    });
+  },
+  collegeEventListener:function(){
+    var self = this;
+    event.stopPropagation();
+    $(".submitEventForm").on("click", function(){
+      self.createEvent();
+    });
+  },
+  createEvent: function(){
+    console.log(this.model);
+    console.log(this.model.collegeEvents);
+    event.preventDefault();
+    var eventData = {
+      title: $("#title").val(),
+      image: $("#image").val(),
+      content: $("#content").val(),
+      start_date: $("#start_date").val(),
+      end_date: $("#end_date").val(),
+      starting_time: $("#starting_time").val(),
+      ending_time: $("#ending_time").val()
+    };
+    this.model.collegeEvents.create(eventData);
+    $("#new-event-modal").hide();
+  },
+  closeEventForm: function(){
+    var self = this;
+    $(".closeForm").on("click", function(){
+      $("#new-event-modal").hide();
     });
   },
   hideSearch: function(){
@@ -28,9 +68,11 @@ App.Views.College = Backbone.View.extend({
     $(".state-search").empty();
     $(".dropdown-toggle").hide();
   },
-  renderEvent: function(event){
+  renderEvent: function(data){
     console.log("Render Event in College.js vIEW");
-    var eventView = new App.Views.Event({model: event});
-    this.$el.find(".events-class-div").append(eventView.$el);
+    console.log(data);
+    var eventView = new App.Views.Event({model: data});
+    console.log(eventView);
+    $(".all-events-div").append(eventView.$el);
   }
 });
