@@ -11,7 +11,6 @@ App.Views.CollegeList = Backbone.View.extend({
     this.collection.each(this.renderOne.bind(this));
   },
   renderOne: function(college){
-    console.log("render one");
     var collegeView = new App.Views.College({model: college});
     this.views.push(collegeView);
   },
@@ -34,7 +33,7 @@ App.Views.CollegeList = Backbone.View.extend({
   showStates: function(states){
     for(var i = 0; i < states.length; i++){
       console.log(states[i]);
-      $(".state-list").append("<li><a href='#'>" + states[i] + "</a></li>");
+      $(".state-list").append("<li class='states-link'>" + states[i] + "</li>");
     }
   },
   displaySearchResults: function(searchResults){
@@ -49,6 +48,21 @@ App.Views.CollegeList = Backbone.View.extend({
     $(".submit").on("click", function(){
       event.preventDefault();
       App.Collections.colleges.searchByName();
+    });
+  },
+  clickOnState: function(){
+    var self = this;
+    allStates = $(".states-link");
+    for(var i = 0; i < allStates.length; i++){
+      self.grabStateValue(allStates[i]);
+    }
+  },
+  grabStateValue: function(state){
+    $(state).on("click", function(){
+      event.preventDefault();
+      var stateName = $(state).text();
+      console.log("clicking on this state: " + stateName);
+      App.Collections.colleges.searchByState(stateName);
     });
   },
   findId: function(id){

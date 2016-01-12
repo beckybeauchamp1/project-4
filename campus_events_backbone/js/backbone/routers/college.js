@@ -11,6 +11,7 @@ App.Routers.College = Backbone.Router.extend({
     App.Collections.colleges.fetch().then(function(){
       App.Views.collegeList.searchStates();
       App.Views.collegeList.buttonClick();
+      App.Views.collegeList.clickOnState();
     });
   },
   show: function(id){

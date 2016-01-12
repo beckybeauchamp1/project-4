@@ -14,15 +14,12 @@ App.Views.College = Backbone.View.extend({
   },
   render: function(){
     App.Routers.college.navigate('colleges/' +  this.model.id);
-    console.log("render");
     event.preventDefault();
   },
   renderCollege: function(){
     App.Routers.college.navigate('colleges/' + this.model.id);
     this.$el.html(this.template(this.model.toJSON()));
-    this.model.collegeEvents.fetch().then(function(data){
-      data.each(this.renderEvent.bind(this));
-    });
+    this.model.collegeEvents.fetch();
     this.toggleEventForm();
   },
   toggleEventForm: function(){
@@ -42,8 +39,6 @@ App.Views.College = Backbone.View.extend({
     });
   },
   createEvent: function(){
-    console.log(this.model);
-    console.log(this.model.collegeEvents);
     event.preventDefault();
     var eventData = {
       title: $("#title").val(),
@@ -69,10 +64,7 @@ App.Views.College = Backbone.View.extend({
     $(".dropdown-toggle").hide();
   },
   renderEvent: function(data){
-    console.log("Render Event in College.js vIEW");
-    console.log(data);
     var eventView = new App.Views.Event({model: data});
-    console.log(eventView);
     $(".all-events-div").append(eventView.$el);
   }
 });
