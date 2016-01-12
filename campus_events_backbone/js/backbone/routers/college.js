@@ -1,7 +1,7 @@
 App.Routers.College = Backbone.Router.extend({
   routes: {
     '' : 'index',
-    'colleges/:id' : 'show'
+    'colleges/:id' : 'show',
   },
   initialize: function(){
     App.Collections.colleges = new App.Collections.Colleges();

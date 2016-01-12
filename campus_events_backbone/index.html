@@ -70,7 +70,6 @@
         <div id="new-event-modal">
           <form class="eventForm">
             <h2>Create Event:</h2>
-            <button type="button" class="closeForm">X</button>
             <label>Title</label>
             <input id="title" type="text" name="title" placeholder="title">
             <label>Photo Url</label>
@@ -86,11 +85,10 @@
             <label>Ending_Time</label>
             <input id="ending_time" name="exit-time" type="time">
             <button type="button" class="btn btn-default submitEventForm">Submit</button>
+            <button type="button" class="btn btn-default closeForm">Cancel</button>
           </form>
         </div>
         <div class="all-events-div">
-          <div id="events-page" class="tab-pane">
-          </div>
         </div>
       </div>
 
@@ -118,12 +116,12 @@
           <div class="col-md-8 tags">
             <h3>Event Tags:</h3>
             <button type="button" class="btn btn-default btn-lg toggle-event-form" data-toggle="modal" data-target="#new-event-model">
-              Create New Event
+              Create Event
             </button>
-            <div class="col-md-4 college-name">
-              <h3>{{name}}</h3>
-              <h4>{{city}}, {{state}} {{zipcode}}</h4>
-            </div>
+          </div>
+          <div class="col-md-4 college-name">
+            <h3>{{name}}</h3>
+            <h4>{{city}}, {{state}} {{zipcode}}</h4>
           </div>
         </div>
       </script>
@@ -131,18 +129,18 @@
       <script id="eventTemplate" type="text/x-handlebars-template">
         <div class="row">
           <div class="col-md-8 tags">
-            <h3>{{title}}</h3>
-            <img src="{{image}}"/>
+            <h2>{{title}}</h2>
+            <a href="#"><img src="{{image}}"/></a>
             <p>{{content}}</p>
             <button class="deleteEvent btn btn-danger btn-xs">Delete</button>
-            <button class="deleteEvent btn btn-danger btn-xs">Delete</button>
-            <div class="col-md-4 college-name">
-            <h3>{{start_date}}</h3>
-            <h3>{{end_date}}</h3>
-            {{starting_time}} -> {{ending_time}}
+            <button class="editEvent btn btn-default btn-xs">Edit</button>
+            <h2>Event Date:</h2>
+            <p>{{start_date}}</p>
+            <p>{{end_date}}</p>
+            {{starting_time}}, {{ending_time}}
           </div>
         </div>
-      </div>
-    </script>
-  </body>
-  </html>
+      </script>
+
+    </body>
+    </html>

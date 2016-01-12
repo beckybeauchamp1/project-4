@@ -60,12 +60,6 @@ main p{
 #colleges{
   width: 100%;
 }
-.tags{
-  text-align: left;
-}
-.college-name{
-  text-align: right;
-}
 .heading-pills{
   margin-top: -42px;
   margin-right: -30px;
@@ -255,4 +249,13 @@ form{
 .states-link:hover{
   background-color: lemonchiffon;
   cursor: pointer;
+}
+.tags{
+  text-align: left;
+}
+.college-name{
+  text-align: right;
+}
+img:hover{
+  box-shadow:0 0 20px rgba(0,0,0,0.8);
 }

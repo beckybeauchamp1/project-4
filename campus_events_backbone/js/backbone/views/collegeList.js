@@ -36,6 +36,7 @@ App.Views.CollegeList = Backbone.View.extend({
       $(".state-list").append("<li class='states-link'>" + states[i] + "</li>");
     }
   },
+  // this function is displaying all results for user's search for college name OR STATE
   displaySearchResults: function(searchResults){
     for(i=0;i<searchResults.length;i++) {
       var collegeId = $("<a href='#colleges/" + searchResults[i].get('id') + "'></a>").text(searchResults[i].get('name'));
