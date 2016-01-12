@@ -28,9 +28,6 @@ a:hover{
   color: #ba4dec;
   text-decoration: none;
 }
-button{
-  background-color: purple
-}
 .main-h1{
   font-size: 90px;
   color: #291033;
@@ -78,7 +75,7 @@ main p{
 }
 .heading-pills a{
   font-size: 17px;
-  background-color: rgba(0,0,0,0.3);
+  background-color: rgba(0,0,0,0.1);
 }
 .heading-pills>li.active>a{
   background-color: rgba(255,255,255,0.8);
@@ -177,5 +174,73 @@ form{
   margin-left: 10px;
 }
 .caret{
+  margin-top: 10px;
+}
+
+#new-event-modal {
+  display: none; /* ensures it’s invisible until it’s called */
+  overflow: scroll;
+  position: absolute; /* makes the div go into a position that’s absolute to the browser viewing area */
+  left: 30%; /* positions the div half way horizontally */
+  top: 40%; /* positions the div half way vertically */
+  padding: 25px;
+  padding-top: 30px;
+  padding-bottom: 40px;
+  padding-right: 20px;
+  padding-left: 20px;
+  border: 2px solid #ba4dec;
+  background-color: #eeeeee;
+  width: 43%;
+  height: 700px;
+  z-index: 100; /* makes the div the top layer, so it’ll lay on top of the other content */
+  -webkit-box-shadow:0 0 20px rgba(0,0,0,0.8);
+  -moz-box-shadow:0 0 20px rgba(0,0,0,0.8);
+  box-shadow:0 0 20px rgba(0,0,0,0.8);
+}
+.eventForm{
+  margin: 0 auto;
+  text-align: center;
+}
+
+.eventForm input{
+  margin: auto;
+  text-align: center;
+  font-size: 20px;
+  width: 50%;
+  height: 40px;
+  display: block;
+}
+
+.eventForm label{
+  font-size: 20px;
+  margin: auto;
+  text-align: center;
+  display: block;
+}
+
+.eventForm textarea {
+  margin: 0 auto;
+  font-size: 20px;
+  text-align: center;
+  width: 90%;
+  height: 100px;
+  display: block;
+}
+.submitEvent {
+  padding: 5px;
+  margin-left: 2px;
+  height: 40px;
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+.cancelEvent{
+  padding: 5px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-left: 6px;
+  height: 38.5px;
+  font-size: 20px;
+  font-weight: bold;
   margin-top: 10px;
 }

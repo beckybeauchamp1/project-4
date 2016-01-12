@@ -64,14 +64,35 @@
           </li>
         </ul>
         <div id="college-info" class="tab-content">
-          <div id="colleges" class="tab-pane fade in active">
-            <div id="events-id" class="events-class-div">
-            </div>
+        </div>
+        <div id="colleges" class="tab-pane fade in active">
+        </div>
+          <div id="new-event-modal">
+            <form class="eventForm">
+              <h2>Create Event:</h2>
+              <span class="close">[x]</span>
+              <label>Title</label>
+              <input type="text" name="title" placeholder="title">
+              <label>Photo Url</label>
+              <input type="text" name="image" placeholder="image url">
+              <label>Content</label>
+              <textarea name="content" placeholder="content"></textarea>
+              <label>Start_Date</label>
+              <input id="startdate" name="start_date" placeholder="start_date" min="2015-01-01" max="2017-01-01" type="date">
+              <label>End_Date</label>
+              <input id="end_date" name="end_date" min="2015-01-01" max="2017-01-01" type="date">
+              <label>Event_Time</label>
+              <input id="starting-time" name="exit-time" type="time">
+              <label>Ending_Time</label>
+              <input id="ending-time" name="exit-time" type="time">
+              <button class="btn submit btn-default submitEvent">Submit</button>
+              <button class="btn cancel cancelEvent">Cancel</button>
+            </form>
           </div>
-          <div id="calendar" class="tab-pane">
-          </div>
+        <div id="calendar" class="tab-pane">
         </div>
       </div>
+
       <div class="state-search">
         <div class="dropdown college-searches">
           <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Find By State
@@ -93,50 +114,15 @@
             <div class="row">
               <div class="col-md-8 tags">
                 <h3>Event Tags:</h3>
-              </div>
-              <div class="col-md-4 college-name">
-                <h3>{{name}}</h3>
-                <h4>{{city}}, {{state}} {{zipcode}}</h4>
+                <button type="button" class="btn btn-default btn-lg toggle-event-form" data-toggle="modal" data-target="#new-event-model">
+                  Create New Event
+                </button>
+                <div class="col-md-4 college-name">
+                  <h3>{{name}}</h3>
+                  <h4>{{city}}, {{state}} {{zipcode}}</h4>
+                </div>
               </div>
             </div>
-          </script>
-
-          <script id="eventFormTemplate" type="text/x-handlebars-template">
-            <form class="eventForm">
-              <div class="form-horizontal">
-                <fieldset>
-                  <label>Title:</label>
-                  <div><input type="text" name="title" placeholder="title"></div>
-                </fieldset>
-                <fieldset>
-                  <label>Image Url:</label>
-                  <div><input type="text" name="image" placeholder="image url"></div>
-                </fieldset>
-                <fieldset>
-                  <label>Content:</label>
-                  <div><textarea name="content" placeholder="content"></textarea></div>
-                </fieldset>
-                <fieldset>
-                  <label>start_date:</label>
-                  <div><input type="text" name="start_date" placeholder="start date"></div>
-                </fieldset>
-                <fieldset>
-                  <label>end_date:</label>
-                  <div><input type="text" name="end_date" placeholder="end date"></div>
-                </fieldset>
-                <fieldset>
-                  <label>starting_time:</label>
-                  <div><input type="text" name="starting_time" placeholder="starting_time"></div>
-                </fieldset>
-                <fieldset>
-                  <label>&nbsp;</label>
-                  <div>
-                    <button class="btn submit btn-primary">Submit</button>
-                    <button class="btn cancel">Cancel</button>
-                  </div>
-                </fieldset>
-              </div>
-            </form>
           </script>
 
         </div>
