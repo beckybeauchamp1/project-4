@@ -4,9 +4,6 @@ App.Views.College = Backbone.View.extend({
   events: {
     'click button.closeForm': 'alertUser'
   },
-  alertUser: function(){
-    alert("hey!");
-  },
   initialize: function(){
     this.listenTo(this.model, 'change', this.renderCollege);
     this.listenTo(this.model.collegeEvents, 'add', this.renderEvent);

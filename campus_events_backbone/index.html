@@ -10,11 +10,16 @@
 <script src="bower_components/backbone/backbone-min.js"></script>
 <script src="js/app.js"></script>
 <script src="js/backbone/routers/college.js"></script>
+<script src="js/backbone/routers/tag.js"></script>
 <script src="js/backbone/models/event.js"></script>
+<script src="js/backbone/models/tag.js"></script>
 <script src="js/backbone/models/college.js"></script>
 <script src="js/backbone/collections/events.js"></script>
+<script src="js/backbone/collections/tags.js"></script>
 <script src="js/backbone/collections/colleges.js"></script>
 <script src="js/backbone/views/event.js"></script>
+<script src="js/backbone/views/tag.js"></script>
+<script src="js/backbone/views/tagList.js"></script>
 <script src="js/backbone/views/college.js"></script>
 <script src="js/backbone/views/collegeList.js"></script>
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -29,7 +34,7 @@
   <main>
     <nav class="top-fixed-nav">
       <ul>
-        <li class="pull-left"><a href="#"><i class="fa fa-university"></i></a></li>
+        <li class="pull-left"><a href=""><i class="fa fa-university"></i></a></li>
         <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
         <li><a href="#"><i class="fa fa-twitter-square"></i></a></li>
         <li><a href="#"><i class="fa fa-instagram"></i></a></li>
@@ -71,97 +76,109 @@
             <h2>Event Information:</h2>
             <label>Title</label>
             <input id="title" type="text" name="title" placeholder="title">
-            <label>Photo Url</label>
-            <input id="image" type="text" name="image" placeholder="image url">
-            <label>Content</label>
-            <textarea id="content" name="content" placeholder="content"></textarea>
-            <label>Start_Date</label>
-            <input id="start_date" name="start_date" placeholder="start_date" min="2015-01-01" max="2017-01-01" type="date">
-            <label>End_Date</label>
-            <input id="end_date" name="end_date" min="2015-01-01" max="2017-01-01" type="date">
-            <label>Event_Time</label>
-            <input id="starting_time" name="exit-time" type="time">
-            <label>Ending_Time</label>
-            <input id="ending_time" name="exit-time" type="time">
-            <button type="button" class="btn btn-default submitEventForm">Submit</button>
-            <button type="button" class="btn btn-default closeForm">Cancel</button>
-          </form>
-        </div>
-        <div class="all-events-div">
-        </div>
-      </div>
-
-      <div class="state-search">
-        <div class="dropdown college-searches">
-          <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Find By State
-            <span class="caret"></span></button>
-            <ul class="dropdown-menu state-list">
-            </ul>
+            <label>Photo Url<d /label>
+              <input id="image" type="text" name="image" placeholder="image url">
+              <label>Content</label>
+              <textarea id="content" name="content" placeholder="content"></textarea>
+              <label>Start_Date</label>
+              <input id="start_date" name="start_date" placeholder="start_date" min="2015-01-01" max="2017-01-01" type="date">
+              <label>End_Date</label>
+              <input id="end_date" name="end_date" min="2015-01-01" max="2017-01-01" type="date">
+              <label>Event_Time</label>
+              <input id="starting_time" name="exit-time" type="time">
+              <label>Ending_Time</label>
+              <input id="ending_time" name="exit-time" type="time">
+              <button type="button" class="btn btn-default submitEventForm">Submit</button>
+              <button type="button" class="btn btn-default closeForm">Cancel</button>
+            </form>
           </div>
-          <div class="dropdown college-searches">
-            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Search By Name
-              <span class="caret"></span></button>
-              <form action="" class="dropdown-menu">
-                <input type="search" name="collegesearch" class="collegeSearch">
-                <input type="submit" class="submit btn btn-default" list="results">
-              </form>
+          <div class="all-events-div">
+          </div>
+
+          <div class="state-search">
+            <div class="dropdown college-searches">
+              <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Find By State
+                <span class="caret"></span></button>
+                <ul class="dropdown-menu state-list">
+                </ul>
+              </div>
+              <div class="dropdown college-searches">
+                <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Search By Name
+                  <span class="caret"></span></button>
+                  <form action="" class="dropdown-menu">
+                    <input type="search" name="collegesearch" class="collegeSearch">
+                    <input type="submit" class="submit btn btn-default" list="results">
+                  </form>
+                </div>
+              </div>
+
             </div>
-          </div>
-        </div>
-      </main>
+          </main>
 
-      <script id="collegeTemplate" type="text/x-handlebars-template">
-        <div class="row">
-          <div class="col-md-8 tags">
-            <h3>Event Tags:</h3>
-          </div>
-          <div class="col-md-4 college-name">
-            <h3>{{name}}</h3>
-            <h4>{{city}}, {{state}} {{zipcode}}</h4>
-            <button type="button" class="btn btn-default btn-lg toggle-event-form" data-toggle="modal" data-target="#new-event-model">
-              Create Event
-            </button>
-          </div>
-        </div>
-      </script>
+          <script id="collegeTemplate" type="text/x-handlebars-template">
+            <div class="row">
+              <div class="col-md-8 tags">
+                <h3 class="tag-heading">Event Tags:</h3>
+              </div>
+              <div class="col-md-4 college-name">
+                <h3>{{name}}</h3>
+                <h4>{{city}}, {{state}} {{zipcode}}</h4>
+                <button type="button" class="btn btn-default btn-lg toggle-event-form" data-toggle="modal" data-target="#new-event-model">
+                  Create Event
+                </button>
+              </div>
+            </div>
+          </script>
 
-      <script id="eventTemplate" type="text/x-handlebars-template">
-        <div class="row">
-          <div class="col-md-8 tags">
-            <h2>{{title}}</h2>
-            <a href="#"><img class="events-img" src="{{image}}"/></a>
-            <p>{{content}}</p>
-            <button class="deleteEvent btn btn-danger btn-xs">Delete</button>
-            <button class="editEvent btn btn-default btn-xs">Edit</button>
-            <h2>Event Date:</h2>
-            <p>{{start_date}}</p>
-            <p>{{end_date}}</p>
-            {{starting_time}}, {{ending_time}}
-          </div>
-        </div>
-      </script>
+          <script id="eventTemplate" type="text/x-handlebars-template">
+            <div class="row">
+              <div class="col-md-8 tags">
+                <h2>{{title}}</h2>
+                <button type="button" class="btn btn-default btn-lg create-new-tag tag-form" data-toggle="modal" data-target="#new-event-model">
+                  ADD TAG
+                </button>
+                <input id="{{id}}" class="tag-form tag-form-text-input" placeholder="ENTER TAG NAME" name="title" type="text">
+                <input class="tag-form tag-form-submit tagsform" type="submit">
+                <a href="#"><img class="events-img" src="{{image}}"/></a>
+                <p>{{content}}</p>
+                <button class="deleteEvent btn btn-danger btn-xs">Delete</button>
+                <button class="editEvent btn btn-default btn-xs">Edit</button>
+                <h2>Event Date:</h2>
+                <p>{{start_date}}</p>
+                <p>{{end_date}}</p>
+                {{starting_time}}, {{ending_time}}
+              </div>
+            </div>
+          </script>
 
-    <script id="formTemplate" type="text/x-handlebars-template">
-      <form class="eventForm editForm">
-        <h2>Edit Event:</h2>
-        <label>Title</label>
-        <input id="title2" type="text" name="title" value={{title}}>
-        <label>Photo Url</label>
-        <input id="image2" type="text" name="image" value={{image}}>
-        <label>Content</label>
-        <textarea id="content2" name="content">{{content}}</textarea>
-        <label>Start_Date</label>
-        <input id="start_date2" value="start_date" name="start_date" value="start_date" min="2015-01-01" max="2017-01-01" type="date">
-        <label>End_Date</label>
-        <input id="end_date2" value="end_date" name="end_date" min="2015-01-01" max="2017-01-01" type="date">
-        <label>Event_Time</label>
-        <input id="starting_time2" name="exit-time" type="time">
-        <label>Ending_Time</label>
-        <input id="ending_time2" name="exit-time" type="time">
-        <button type="button" class="btn btn-default submitEventForm">Submit</button>
-        <button type="button" class="btn btn-default closeForm">Cancel</button>
-      </form>
-    </script>
+          <script id="formTemplate" type="text/x-handlebars-template">
+            <form class="eventForm editForm">
+              <h2>Edit Event:</h2>
+              <label>Title</label>
+              <input id="title2" type="text" name="title" value={{title}}>
+              <label>Photo Url</label>
+              <input id="image2" type="text" name="image" value={{image}}>
+              <label>Content</label>
+              <textarea id="content2" name="content">{{content}}</textarea>
+              <label>Start_Date</label>
+              <input id="start_date2" value="start_date" name="start_date" value="start_date" min="2015-01-01" max="2017-01-01" type="date">
+              <label>End_Date</label>
+              <input id="end_date2" value="end_date" name="end_date" min="2015-01-01" max="2017-01-01" type="date">
+              <label>Event_Time</label>
+              <input id="starting_time2" name="exit-time" type="time">
+              <label>Ending_Time</label>
+              <input id="ending_time2" name="exit-time" type="time">
+              <button type="button" class="btn btn-default submitEventForm">Submit</button>
+              <button type="button" class="btn btn-default closeForm">Cancel</button>
+            </form>
+          </script>
 
-    </body>
-    </html>
+
+          <script id="tagTemplate" type="text/x-handlebars-template">
+            <a class="each-tag" href="#">{{title}}</a>
+          </script>
+
+
+
+        </body>
+        </html>

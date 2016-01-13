@@ -6,6 +6,8 @@ App.Routers.College = Backbone.Router.extend({
   initialize: function(){
     App.Collections.colleges = new App.Collections.Colleges();
     App.Views.collegeList = new App.Views.CollegeList({collection: App.Collections.colleges});
+    App.Collections.tagsCollection = new App.Collections.Tags();
+    App.Views.tagList = new App.Views.TagsList({collection: App.Collections.tagsCollection});
   },
   index: function(){
     App.Collections.colleges.fetch().then(function(){
@@ -17,10 +19,13 @@ App.Routers.College = Backbone.Router.extend({
   show: function(id){
     App.Collections.colleges.fetch().then(function(){
       view = App.Views.collegeList.findId(id);
-      console.log(view);
       view.hideSearch();
-      console.log(view);
       view.renderCollege();
+      App.Collections.tagsCollection.fetch().then(function(tag){
+        for(var i = 0; i < tag.length; i++){
+          console.log(tag[i]);
+        }
+      });
     });
   }
 });
