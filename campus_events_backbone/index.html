@@ -68,7 +68,7 @@
         <div id="colleges" class="tab-pane fade in active">
         </div>
         <div id="new-event-modal">
-          <form class="eventForm">
+          <form class="eventForm newForm">
             <h2>Create Event:</h2>
             <label>Title</label>
             <input id="title" type="text" name="title" placeholder="title">
@@ -141,6 +141,28 @@
           </div>
         </div>
       </script>
+
+    <script id="formTemplate" type="text/x-handlebars-template">
+      <form class="eventForm editForm">
+        <h2>Create Event:</h2>
+        <label>Title</label>
+        <input id="title" type="text" name="title" value={{title}}>
+        <label>Photo Url</label>
+        <input id="image" type="text" name="image" value={{image}}>
+        <label>Content</label>
+        <textarea id="content" name="content">{{content}}</textarea>
+        <label>Start_Date</label>
+        <input id="start_date" name="start_date" value="start_date" min="2015-01-01" max="2017-01-01" type="date">
+        <label>End_Date</label>
+        <input id="end_date" name="end_date" min="2015-01-01" max="2017-01-01" type="date">
+        <label>Event_Time</label>
+        <input id="starting_time" name="exit-time" type="time">
+        <label>Ending_Time</label>
+        <input id="ending_time" name="exit-time" type="time">
+        <button type="button" class="btn btn-default submitEventForm">Submit</button>
+        <button type="button" class="btn btn-default closeForm">Cancel</button>
+      </form>
+    </script>
 
     </body>
     </html>
