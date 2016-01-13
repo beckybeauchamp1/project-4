@@ -1,6 +1,9 @@
 App.Views.Tag = Backbone.View.extend({
   className: 'tags-class-list',
   tagName: "li",
+  events: {
+    'click .tag-form-submit': 'create'
+  },
   initialize: function(){
     console.log("initialize tag model");
     this.listenTo(this.model, 'change', this.render);

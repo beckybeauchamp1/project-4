@@ -3,7 +3,9 @@ App.Views.Event = Backbone.View.extend({
   tagName: "div",
   events: {
     "click .deleteEvent": "delete",
-    "click .editEvent": "edit"
+    "click .editEvent": "edit",
+    'click .create-new-tag': 'toggleForm',
+    "click .tag-form-submit": 'createTag'
   },
   initialize: function(){
     this.listenTo(this.model, 'change', this.render);
@@ -53,5 +55,22 @@ App.Views.Event = Backbone.View.extend({
     this.model.save(eventData);
     $("#new-event-modal").hide();
     $(".eventForm").hide();
+  },
+  toggleForm: function(){
+    event.preventDefault();
+    event.stopPropagation();
+    console.log(event);
+    $(".toggle-tag-form").toggle();
+  },
+  createTag: function(){
+    event.preventDefault();
+    event.stopPropagation();
+    var tagData = {
+      title: $(".tag-form-text-input").val(),
+      event_id: parseInt($(".tag-form-text-input").attr("id"))
+    };
+    console.log(tagData);
+    App.Collections.tagsCollection.create(tagData);
+    $(".toggle-tag-form").hide();
   }
 });

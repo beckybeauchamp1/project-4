@@ -133,12 +133,10 @@
           <script id="eventTemplate" type="text/x-handlebars-template">
             <div class="row">
               <div class="col-md-8 tags">
-                <h2>{{title}}</h2>
-                <button type="button" class="btn btn-default btn-lg create-new-tag tag-form" data-toggle="modal" data-target="#new-event-model">
-                  ADD TAG
-                </button>
-                <input id="{{id}}" class="tag-form tag-form-text-input" placeholder="ENTER TAG NAME" name="title" type="text">
-                <input class="tag-form tag-form-submit tagsform" type="submit">
+                <h2 class="tagss">{{title}}</h2>
+                <p class="tagss create-new-tag"><i class='fa fa-tags'></i></p>
+                <input id="{{id}}" class="tagss tag-form tag-form-text-input toggle-tag-form" placeholder="ENTER TAG NAME" name="title" type="text">
+                <input class="tagss tag-form-submit toggle-tag-form btn btn-default" type="submit">
                 <a href="#"><img class="events-img" src="{{image}}"/></a>
                 <p>{{content}}</p>
                 <button class="deleteEvent btn btn-danger btn-xs">Delete</button>

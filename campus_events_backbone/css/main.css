@@ -264,6 +264,7 @@ img:hover{
 }
 .events-img{
   width: 80%;
+  margin-top: 40px;
   height: 400px;
 }
 .toggle-event-form{
@@ -295,32 +296,34 @@ img:hover{
 .each-tag:hover{
   box-shadow:0 0 20px rgba(0,0,0,0.8);
 }
-.create-new-tag{
-  width: 11%;
-  height: 31px;
-  color: black;
-  margin-bottom: 10px;
-  margin-left: 200px;
-  padding-bottom: 8px;
-  font-size: 7px;
-  font-weight: bold;
-  text-align: center;
-}
-.tag-form{
+.tagss{
   display: inline;
-  margin-top: 10px;
-  margin-left: 5px;
-  padding-bottom: 9px;
-  font-size: 10px;
+}
+.toggle-tag-form{
+  display: none;
+  margin-left: 40px;
 }
 .tag-form-submit{
- height: 31px;
+ height: 34px;
+ margin-top: 4px;
  margin-left: 10px;
 }
 .tag-form-text-input{
-  margin-left: 40px;
-  height: 31px;
+  margin-left: 10px;
+  height: 35px;
   padding-bottom: 10px;
   font-size: 17px;
-  margin-top: 8px;
+}
+.create-new-tag{
+  margin-left: 30px;
+  color: black;
+  /*margin-bottom: 10px;
+  margin-left: 200px;*/
+  font-size: 28px;
+  font-weight: bold;
+  text-align: center;
+}
+.create-new-tag:hover{
+  color: #4ddaff;
+  height: inherit;
 }
