@@ -27,6 +27,7 @@ App.Views.College = Backbone.View.extend({
     event.stopPropagation();
     var self = this;
     $(".toggle-event-form").on("click", function(){
+      $(".newForm").show();
       event.stopPropagation();
       $("#new-event-modal").show();
       App.Routers.college.navigate('colleges/' + self.model.id + '/new-event');
