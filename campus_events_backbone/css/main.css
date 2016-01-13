@@ -40,8 +40,6 @@ main p{
   width: 80%;
   background-color: rgba(255,255,255,0.8);
   margin-top: 10px;
-  overflow: scroll;
-  overflow-x: scroll;
 }
 #Tab1{
   text-align: left;
