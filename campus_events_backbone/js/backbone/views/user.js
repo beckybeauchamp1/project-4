@@ -51,11 +51,11 @@ App.Views.User = Backbone.View.extend({
     event.preventDefault();
     event.stopPropagation();
     var userData = {
-      first_name: $("#first_name").val(),
-      last_name: $("#last_name").val(),
-      email: $("#email").val(),
-      password: $("#password").val(),
-      password_confirmation: $("#password_confirmation").val()
+      "user[first_name]": $("#first_name").val(),
+      "user[last_name]": $("#last_name").val(),
+      "user[email]": $("#email").val(),
+      "user[password]": $("#password").val(),
+      "user[password_confirmation]": $("#password_confirmation").val()
     };
     console.log(userData);
     console.log(this);

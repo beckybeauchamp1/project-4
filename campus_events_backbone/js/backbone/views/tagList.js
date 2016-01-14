@@ -22,9 +22,13 @@ App.Views.TagsList = Backbone.View.extend({
       if($(".tag-form-text-input").val() !== ""){
         var tagData = {
           title: $(".tag-form-text-input").val(),
-          event_id: parseInt($(".tag-form-text-input").attr("id"))
         };
         self.collection.create(tagData);
+        // console.log("newTag " + newTag);
+        // var newTagView = new App.Views.Tag({model: newTag});
+        // console.log(newTagView);
+        // var taggedEventID = newTagView.model.attributes.id;
+        // console.log(taggedEventID);
         // var newTag = App.Collections.tagsCollection.create(tagData);
         // this.createTaggedEvent(newTag);
         // this.model.taggedEvents.create(newTag);
@@ -34,8 +38,6 @@ App.Views.TagsList = Backbone.View.extend({
     });
   },
   renderOne: function(tag){
-    console.log("Rendering One!");
-    console.log(tag);
     var displayTag = new App.Views.Tag({model: tag});
     this.views.push(displayTag);
   }

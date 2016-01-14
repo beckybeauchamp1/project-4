@@ -81,6 +81,15 @@ App.Views.Event = Backbone.View.extend({
     App.Views.tagList.createTag();
 
   },
+  createTaggedEvent: function(id){
+    console.log(id);
+    console.log("creating tagged event");
+    event.preventDefault();
+    var data = {
+      tag_id: id
+    };
+    this.model.taggedEvents.create(data);
+  },
   // "show page" for each individual event
   showEventPage: function(){
     event.preventDefault();
