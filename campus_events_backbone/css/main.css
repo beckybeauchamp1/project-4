@@ -357,11 +357,17 @@ img:hover{
 .back i:hover{
   text-shadow: 2px 2px 4px #000000;
 }
-html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
+/*user signup form*/
+.user-signup-form{
+  text-align: center;
 }
-#map {
-  height: 100%;
+.user-signup-form input{
+  margin: 0 auto;
+  text-align: center;
+  display: block;
+  margin: auto;
+  font-size: 20px;
+  width: 70%;
+  height: 40px;
+  margin-top: 20px;
 }
