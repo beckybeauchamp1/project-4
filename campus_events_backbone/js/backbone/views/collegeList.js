@@ -15,20 +15,19 @@ App.Views.CollegeList = Backbone.View.extend({
     this.views.push(App.Views.collegeView);
   },
   searchStates: function(){
-    var self = this;
     var colleges = App.Collections.colleges;
     var state = colleges.pluck("state");
+    this.filterStates(state);
+  },
+  filterStates: function(state){
     var states = [];
-    filterStates();
-    function filterStates(){
-      for(var i = 0; i < state.length ; i++){
-        if (states.indexOf(state[i]) === -1){
-          console.log("Not in the array");
-          states.push(state[i]);
-        }
+    for(var i = 0; i < state.length ; i++){
+      if (states.indexOf(state[i]) === -1){
+        console.log("Not in the array");
+        states.push(state[i]);
       }
-      App.Views.collegeList.showStates(states);
     }
+    App.Views.collegeList.showStates(states);
   },
   showStates: function(states){
     for(var i = 0; i < states.length; i++){

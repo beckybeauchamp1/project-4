@@ -9,16 +9,15 @@ App.Views.College = Backbone.View.extend({
     this.listenTo(this.model.collegeEvents, 'add', this.renderEvent);
     this.template = Handlebars.compile($("#collegeTemplate").html());
   },
-  render: function(){
-    App.Routers.college.navigate('colleges/' +  this.model.id);
-    event.preventDefault();
-  },
   renderCollege: function(){
     App.Routers.college.navigate('colleges/' + this.model.id);
     this.$el.html(this.template(this.model.toJSON()));
     this.model.collegeEvents.fetch();
-    // do i need a .bind for the above??
     this.toggleEventForm();
+  },
+  renderEvent: function(data){
+    App.Views.eventView = new App.Views.Event({model: data});
+    $(".all-events-div").append(App.Views.eventView.$el);
   },
   toggleEventForm: function(){
     event.stopPropagation();
@@ -66,9 +65,5 @@ App.Views.College = Backbone.View.extend({
     this.$el.empty();
     $(".state-search").empty();
     $(".dropdown-toggle").hide();
-  },
-  renderEvent: function(data){
-    App.Views.eventView = new App.Views.Event({model: data});
-    $(".all-events-div").append(App.Views.eventView.$el);
-  },
+  }
 });
