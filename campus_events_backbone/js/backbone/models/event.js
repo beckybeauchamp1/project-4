@@ -1,6 +1,7 @@
 App.Models.Event = Backbone.Model.extend({
   initialize: function(){
     this.taggedEvents = new App.Collections.TaggedEvents();
+    console.log(this.taggedEvents);
     this.taggedEvents.url = this.url() + '/tagged_events';
     App.Collections.taggedEvents = this.taggedEvents;
     this.listenTo(this, "change", this.updateUrl);

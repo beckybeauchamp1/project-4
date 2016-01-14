@@ -1,4 +1,4 @@
-App.Views.Tag = Backbone.View.extend({
+App.Views.TaggedEventsView = Backbone.View.extend({
   className: 'tags-class-list',
   tagName: "li",
   events: {
@@ -16,5 +16,5 @@ App.Views.Tag = Backbone.View.extend({
   delete: function(){
     this.model.destroy();
     this.$el.fadeOut();
-  }
+  },
 });

@@ -5,12 +5,12 @@ App.Views.Event = Backbone.View.extend({
     "click .deleteEvent": "delete",
     "click .editEvent": "edit",
     'click .create-new-tag': 'toggleTagForm',
-    "click .tag-form-submit": 'createTag',
     "click .events-img": 'showEventPage',
     "click .back": 'closeEventShowPage'
   },
   initialize: function(){
     this.listenTo(this.model, 'change', this.render);
+    this.listenTo(this.model.taggedEvents, 'add', this.renderTag);
     this.template = Handlebars.compile($("#eventTemplate").html());
     this.thisEvent = Handlebars.compile($("#thisEvent").html());
     this.eventFormTemplate = Handlebars.compile($("#formTemplate").html());
@@ -26,6 +26,11 @@ App.Views.Event = Backbone.View.extend({
     for(var i = 0; i < views.length; i++){
       App.Views.collegeView.renderEvent((views[i]));
     }
+  },
+  renderTag: function(data){
+    console.log("rendering Tag!");
+    App.Views.taggedEventsView = new App.Views.TaggedEventsView({model: data});
+    $("#tags").append(App.Views.taggedEventsView.$el);
   },
   delete: function(){
     this.model.destroy();
@@ -73,26 +78,15 @@ App.Views.Event = Backbone.View.extend({
     event.preventDefault();
     event.stopPropagation();
     $(".toggle-tag-form").toggle();
-  },
-  createTag: function(){
-    event.preventDefault();
-    event.stopPropagation();
-    if($(".tag-form-text-input").val() !== ""){
-      var tagData = {
-        title: $(".tag-form-text-input").val(),
-        event_id: parseInt($(".tag-form-text-input").attr("id"))
-      };
-      App.Collections.tagsCollection.create(tagData);
-    }
-    $(".tag-form-text-input").val("");
-    $(".toggle-tag-form").hide();
+    App.Views.tagList.createTag();
+
   },
   // "show page" for each individual event
   showEventPage: function(){
     event.preventDefault();
     event.stopPropagation();
     $(".events-class").empty();
-    this.$el.html(self.thisEvent(self.model.toJSON()));
+    this.$el.html(this.thisEvent(this.model.toJSON()));
   },
   closeEventShowPage: function(){
     event.preventDefault();
