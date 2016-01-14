@@ -8,15 +8,11 @@ App.Views.TagsList = Backbone.View.extend({
     this.listenTo(this.collection, 'add', this.renderOne);
   },
   renderAll: function(){
-    console.log("render all tags");
     this.$el.empty();
     this.collection.each(this.renderOne.bind(this));
   },
   renderOne: function(tag){
-    console.log("renderOne");
-    console.log(tag);
     var displayTag = new App.Views.Tag({model: tag});
-    console.log(displayTag);
     this.views.push(displayTag);
   }
 });

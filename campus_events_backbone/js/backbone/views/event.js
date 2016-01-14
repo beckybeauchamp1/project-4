@@ -4,7 +4,7 @@ App.Views.Event = Backbone.View.extend({
   events: {
     "click .deleteEvent": "delete",
     "click .editEvent": "edit",
-    'click .create-new-tag': 'toggleForm',
+    'click .create-new-tag': 'toggleTagForm',
     "click .tag-form-submit": 'createTag',
     "click .events-img": 'showEventPage',
     "click .back": 'closeEventShowPage'
@@ -19,6 +19,7 @@ App.Views.Event = Backbone.View.extend({
   render: function() {
     this.$el.html(this.template(this.model.toJSON()));
   },
+  // feels like this is a very BAD workaround, but was having issues regenerating all events after show page
   renderAll: function(){
     this.$el.empty();
     var views = this.model.collection.models;
@@ -31,6 +32,8 @@ App.Views.Event = Backbone.View.extend({
     this.$el.fadeOut();
   },
   edit: function(){
+    // using the same module to render forms so need to hide the new event form. I KNOW I need
+    // to go back and create a new form template and view
     $(".newForm").hide();
     $("#new-event-modal").append(this.eventFormTemplate(this.model.toJSON()));
     $("#new-event-modal").show();
@@ -38,7 +41,6 @@ App.Views.Event = Backbone.View.extend({
     this.eventsEventListener();
   },
   closeEventForm: function(){
-    var self = this;
     $(".closeForm").on("click", function(){
       $("#new-event-modal").hide();
       $(".eventForm").hide();
@@ -66,10 +68,10 @@ App.Views.Event = Backbone.View.extend({
     $("#new-event-modal").hide();
     $(".eventForm").hide();
   },
-  toggleForm: function(){
+  // feel like this should be in a different view
+  toggleTagForm: function(){
     event.preventDefault();
     event.stopPropagation();
-    console.log(event);
     $(".toggle-tag-form").toggle();
   },
   createTag: function(){
@@ -85,16 +87,12 @@ App.Views.Event = Backbone.View.extend({
     $(".tag-form-text-input").val("");
     $(".toggle-tag-form").hide();
   },
+  // "show page" for each individual event
   showEventPage: function(){
-    var self = this;
     event.preventDefault();
     event.stopPropagation();
-    console.log(this.view);
-    console.log(this.$el);
     $(".events-class").empty();
-    this.$el.fadeIn(function(){
-      self.$el.html(self.thisEvent(self.model.toJSON()));
-    });
+    this.$el.html(self.thisEvent(self.model.toJSON()));
   },
   closeEventShowPage: function(){
     event.preventDefault();
