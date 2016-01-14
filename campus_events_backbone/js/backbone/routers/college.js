@@ -17,7 +17,7 @@ App.Routers.College = Backbone.Router.extend({
     });
   },
   show: function(id){
-    App.Collections.colleges.fetch().then(function(){
+    App.Collections.colleges.fetch().then(function(college){
       view = App.Views.collegeList.findId(id);
       view.hideSearch();
       view.renderCollege();

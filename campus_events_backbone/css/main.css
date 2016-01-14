@@ -360,14 +360,17 @@ img:hover{
 /*user signup form*/
 .user-signup-form{
   text-align: center;
+  margin: 0 auto;
 }
 .user-signup-form input{
   margin: 0 auto;
   text-align: center;
   display: block;
-  margin: auto;
   font-size: 20px;
-  width: 80%;
+  width: 60%;
   height: 40px;
   margin-top: 20px;
+}
+.user-signup-form h2{
+  font-size: 38px;
 }

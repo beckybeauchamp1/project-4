@@ -4,7 +4,6 @@ App.Models.College = Backbone.Model.extend({
     this.collegeEvents = new App.Collections.Events();
     App.Collections.events = this.collegeEvents;
     this.collegeEvents.url = this.url() + '/events';
-
     this.listenTo(this, "change", this.updateUrl);
   },
   updateUrl: function(){
