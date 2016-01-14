@@ -27,7 +27,7 @@ App.Views.CollegeList = Backbone.View.extend({
         states.push(state[i]);
       }
     }
-    App.Views.collegeList.showStates(states);
+    this.showStates(states);
   },
   showStates: function(states){
     for(var i = 0; i < states.length; i++){
@@ -37,31 +37,30 @@ App.Views.CollegeList = Backbone.View.extend({
   },
   // this function is displaying all results for user's search for college name OR STATE
   displaySearchResults: function(searchResults){
-    for(i=0;i<searchResults.length;i++) {
+    for(i=0; i<searchResults.length; i++) {
       var collegeId = $("<a href='#colleges/" + searchResults[i].get('id') + "'></a>").text(searchResults[i].get('name'));
       collegeId.addClass("college-search-results");
       $('.state-search').append(collegeId);
     }
   },
+  // this should probably go elsewhere, used to search for colleges by name
   buttonClick: function(){
-    var self = this;
     $(".submit").on("click", function(){
       event.preventDefault();
       App.Collections.colleges.searchByName();
     });
   },
   clickOnState: function(){
-    var self = this;
-    allStates = $(".states-link");
+    var allStates = $(".states-link");
     for(var i = 0; i < allStates.length; i++){
-      self.grabStateValue(allStates[i]);
+      this.grabStateValue(allStates[i]);
     }
   },
+  // calling function to search college collection for matches with that state name
   grabStateValue: function(state){
     $(state).on("click", function(){
       event.preventDefault();
       var stateName = $(state).text();
-      console.log("clicking on this state: " + stateName);
       App.Collections.colleges.searchByState(stateName);
     });
   },
@@ -69,7 +68,6 @@ App.Views.CollegeList = Backbone.View.extend({
     for(var i = 0; i < this.views.length; i++){
       if(this.views[i].model.get("id") == id){
         var view = this.views[i];
-        console.log(this.views[i]);
         return view;
       }
     }

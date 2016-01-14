@@ -3,7 +3,7 @@ App.Collections.Colleges = Backbone.Collection.extend({
   model: App.Models.College,
 
   url: "http://localhost:3000/colleges",
-
+  // is it okay to have these functions in the collection??
   searchByName: function(){
     var searchName = this.filter(function(findModel){
       var search = $(".collegeSearch").val();
