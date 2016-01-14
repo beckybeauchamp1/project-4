@@ -18,6 +18,10 @@ h1{
   margin: 0 auto;
   text-shadow: 2px 2px 4px #000000;
 }
+h2{
+  font-family: "Graduate";
+  font-weight: bolder;
+}
 a{
   color: black;
   text-decoration: none;
@@ -25,6 +29,9 @@ a{
 a:hover{
   color: #ba4dec;
   text-decoration: none;
+}
+p{
+  line-height: 2em;
 }
 .main-h1{
   font-size: 90px;
@@ -326,4 +333,35 @@ img:hover{
 .create-new-tag:hover{
   color: #4ddaff;
   height: inherit;
+}
+/*show page for events*/
+.show-page{
+  text-align: center;
+}
+.show-page img{
+  width: 65%;
+  margin-top: 40px;
+  height: 440px;
+  margin: 0 auto;
+}
+.show-page h2{
+  font-size: 40px;
+}
+.show-page p{
+  line-height: 3em;
+  font-size: 20px;
+}
+.back i{
+  font-size: 30px;
+}
+.back i:hover{
+  text-shadow: 2px 2px 4px #000000;
+}
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+#map {
+  height: 100%;
 }

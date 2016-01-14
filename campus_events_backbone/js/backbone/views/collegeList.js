@@ -11,8 +11,8 @@ App.Views.CollegeList = Backbone.View.extend({
     this.collection.each(this.renderOne.bind(this));
   },
   renderOne: function(college){
-    var collegeView = new App.Views.College({model: college});
-    this.views.push(collegeView);
+    App.Views.collegeView = new App.Views.College({model: college});
+    this.views.push(App.Views.collegeView);
   },
   searchStates: function(){
     var self = this;

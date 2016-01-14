@@ -5,16 +5,26 @@ App.Views.Event = Backbone.View.extend({
     "click .deleteEvent": "delete",
     "click .editEvent": "edit",
     'click .create-new-tag': 'toggleForm',
-    "click .tag-form-submit": 'createTag'
+    "click .tag-form-submit": 'createTag',
+    "click .events-img": 'showEventPage',
+    "click .back": 'closeEventShowPage'
   },
   initialize: function(){
     this.listenTo(this.model, 'change', this.render);
     this.template = Handlebars.compile($("#eventTemplate").html());
+    this.thisEvent = Handlebars.compile($("#thisEvent").html());
     this.eventFormTemplate = Handlebars.compile($("#formTemplate").html());
     this.render();
   },
   render: function() {
     this.$el.html(this.template(this.model.toJSON()));
+  },
+  renderAll: function(){
+    this.$el.empty();
+    var views = this.model.collection.models;
+    for(var i = 0; i < views.length; i++){
+      App.Views.collegeView.renderEvent((views[i]));
+    }
   },
   delete: function(){
     this.model.destroy();
@@ -65,12 +75,29 @@ App.Views.Event = Backbone.View.extend({
   createTag: function(){
     event.preventDefault();
     event.stopPropagation();
-    var tagData = {
-      title: $(".tag-form-text-input").val(),
-      event_id: parseInt($(".tag-form-text-input").attr("id"))
-    };
-    console.log(tagData);
-    App.Collections.tagsCollection.create(tagData);
+    if($(".tag-form-text-input").val() !== ""){
+      var tagData = {
+        title: $(".tag-form-text-input").val(),
+        event_id: parseInt($(".tag-form-text-input").attr("id"))
+      };
+      App.Collections.tagsCollection.create(tagData);
+    }
+    $(".tag-form-text-input").val("");
     $(".toggle-tag-form").hide();
+  },
+  showEventPage: function(){
+    var self = this;
+    event.preventDefault();
+    event.stopPropagation();
+    console.log(this.view);
+    console.log(this.$el);
+    $(".events-class").empty();
+    this.$el.fadeIn(function(){
+      self.$el.html(self.thisEvent(self.model.toJSON()));
+    });
+  },
+  closeEventShowPage: function(){
+    event.preventDefault();
+    this.renderAll();
   }
 });

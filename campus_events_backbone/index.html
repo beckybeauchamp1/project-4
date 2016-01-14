@@ -10,7 +10,6 @@
 <script src="bower_components/backbone/backbone-min.js"></script>
 <script src="js/app.js"></script>
 <script src="js/backbone/routers/college.js"></script>
-<script src="js/backbone/routers/tag.js"></script>
 <script src="js/backbone/models/event.js"></script>
 <script src="js/backbone/models/tag.js"></script>
 <script src="js/backbone/models/college.js"></script>
@@ -111,7 +110,6 @@
                   </form>
                 </div>
               </div>
-
             </div>
           </main>
 
@@ -137,7 +135,7 @@
                 <p class="tagss create-new-tag"><i class='fa fa-tags'></i></p>
                 <input id="{{id}}" class="tagss tag-form tag-form-text-input toggle-tag-form" placeholder="ENTER TAG NAME" name="title" type="text">
                 <input class="tagss tag-form-submit toggle-tag-form btn btn-default" type="submit">
-                <a href="#"><img class="events-img" src="{{image}}"/></a>
+                <a id="{{id}}" href="#"><img class="events-img" src="{{image}}"/></a>
                 <p>{{content}}</p>
                 <button class="deleteEvent btn btn-danger btn-xs">Delete</button>
                 <button class="editEvent btn btn-default btn-xs">Edit</button>
@@ -145,6 +143,30 @@
                 <p>{{start_date}}</p>
                 <p>{{end_date}}</p>
                 {{starting_time}}, {{ending_time}}
+              </div>
+            </div>
+          </script>
+
+          <script id="thisEvent" type="text/x-handlebars-template">
+            <div class="row">
+              <div class="col-md-12 show-page">
+                <h2>{{title}}</h2>
+                <p class="back"><i class="fa fa-long-arrow-left"></i></p>
+                <p>
+                  <a id="{{id}}" href="#"><img class="events-img" src="{{image}}"/></a>
+                </p>
+                <p>{{content}}</p>
+                <button class="deleteEvent btn btn-danger btn-xs">Delete</button>
+                <button class="editEvent btn btn-default btn-xs">Edit</button>
+                <h2>Event Date:</h2>
+                <p>{{start_date}}</p>
+                <p>{{end_date}}</p>
+                {{starting_time}}, {{ending_time}}
+                <p>
+                  <p class="tagss create-new-tag">Add TAG <i class='fa fa-tags'></i></p>
+                  <input id="{{id}}" class="tagss tag-form tag-form-text-input toggle-tag-form" placeholder="ENTER TAG NAME" name="title" type="text">
+                  <input class="tagss tag-form-submit toggle-tag-form btn btn-default" type="submit">
+                </p>
               </div>
             </div>
           </script>
@@ -176,7 +198,5 @@
             <a class="each-tag" href="#">{{title}}</a>
           </script>
 
-
-
-        </body>
-        </html>
+          </body>
+          </html>

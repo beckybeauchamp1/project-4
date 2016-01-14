@@ -68,7 +68,7 @@ App.Views.College = Backbone.View.extend({
     $(".dropdown-toggle").hide();
   },
   renderEvent: function(data){
-    var eventView = new App.Views.Event({model: data});
-    $(".all-events-div").append(eventView.$el);
-  }
+    App.Views.eventView = new App.Views.Event({model: data});
+    $(".all-events-div").append(App.Views.eventView.$el);
+  },
 });
